@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   make_a_bi_uebergang_with_mlx.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/10 19:38:30 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/10 22:28:13 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 #include <unistd.h>
 #include "mlx/mlx.h"
 #include <stdio.h>
-
-int	hook_do_something(int key, void *param)
-{
-	(void)param;
-	printf("key hook activated: %d\n", key);
-
-	return (0);
-}
 
 typedef struct	s_img_data
 {
@@ -47,35 +39,45 @@ int	main(void)
 	t_img_data	img;
 
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Hello world!");
+	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Love is Love");
 
 	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
 	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
-	printf("address: [%s]\nbits per pixel: [%i]\nsize line: [%i]\nendian: [%i]\n", img.addr, img.bits_per_pixel, img.size_line, img.endian);
 
 	int	x = 0;
 	int	y = 0;
-	int	i = 1;
-	long long rainbow[6] = {0x00FF0018, 0x00FFA52C, 0x00FFFF41, 0x00008018, 0x000000F9, 0x0086007D};
+	long long bi_colours[3] = {0x00D00070, 0x008C4799, 0x000032A0};
 
-	int	format = 167;
-	while (i <= 6)
+	while (bi_colours[0] != 0x00D000FF)
 	{
-		while (y < format)
+		while (x < 1000)
 		{
-			while (x < 1000)
-			{
-				if ((y + (167 * (i - 1))) < 1000)
-					my_mlx_pixel_put(&img, x, (y + (167 * (i - 1))), rainbow[i - 1]);
-				x++;
-			}
-			x = 0;
-			y++;
+			if (y < 1000)
+				my_mlx_pixel_put(&img, x, y, bi_colours[0]);
+			x++;
 		}
-		i++;
-		y = 0;
+		x = 0;
+		y++;
+		if (y % 3 == 0)
+			bi_colours[0]++;
 	}
+	while (bi_colours[0] != 0x000000FF)
+	{
+		while (x < 1000)
+		{
+			if (y < 1000)
+				my_mlx_pixel_put(&img, x, y, bi_colours[0]);
+			x++;
+		}
+		x = 0;
+		y++;
+		if (y % 3 == 0)
+			bi_colours[0] -= 0x00010000;
+	}
+	printf("y = [%i]\n", y);
 
+
+	printf("address: [%s]\nbits per pixel: [%i]\nsize line: [%i]\nendian: [%i]\n", img.addr, img.bits_per_pixel, img.size_line, img.endian);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img_ptr, 0, 0);
 
 	mlx_loop(mlx_ptr);

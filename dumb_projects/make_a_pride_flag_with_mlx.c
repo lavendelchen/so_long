@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   make_a_pride_flag_with_mlx.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/10 19:38:30 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/10 22:28:10 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 #include <unistd.h>
 #include "mlx/mlx.h"
 #include <stdio.h>
-
-int	hook_do_something(int key, void *param)
-{
-	(void)param;
-	printf("key hook activated: %d\n", key);
-
-	return (0);
-}
 
 typedef struct	s_img_data
 {
@@ -47,7 +39,7 @@ int	main(void)
 	t_img_data	img;
 
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Hello world!");
+	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Love is Love");
 
 	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
 	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
