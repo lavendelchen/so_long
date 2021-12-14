@@ -6,19 +6,22 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/10 19:38:30 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/14 18:36:30 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <unistd.h>
 #include "mlx/mlx.h"
+#include "keys.h"
 #include <stdio.h>
 
 int	hook_do_something(int key, void *param)
 {
 	(void)param;
 	printf("key hook activated: %d\n", key);
+	if (key == KEY_X)
+		printf("mr x!!!!!!!!!!\n");
 
 	return (0);
 }
@@ -40,19 +43,8 @@ void	my_mlx_pixel_put(t_img_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	main(void)
+void	make_rainbow(t_img_data	*img)
 {
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img_data	img;
-
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Hello world!");
-
-	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
-	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
-	printf("address: [%s]\nbits per pixel: [%i]\nsize line: [%i]\nendian: [%i]\n", img.addr, img.bits_per_pixel, img.size_line, img.endian);
-
 	int	x = 0;
 	int	y = 0;
 	int	i = 1;
@@ -66,7 +58,7 @@ int	main(void)
 			while (x < 1000)
 			{
 				if ((y + (167 * (i - 1))) < 1000)
-					my_mlx_pixel_put(&img, x, (y + (167 * (i - 1))), rainbow[i - 1]);
+					my_mlx_pixel_put(img, x, (y + (167 * (i - 1))), rainbow[i - 1]);
 				x++;
 			}
 			x = 0;
@@ -75,8 +67,27 @@ int	main(void)
 		i++;
 		y = 0;
 	}
+}
 
+int	main(void)
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_img_data	img;
+
+	mlx_ptr = mlx_init();
+	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Hello world!");
+
+	//making the image of the rainbow
+	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
+	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
+	printf("address: [%s]\nbits per pixel: [%i]\nsize line: [%i]\nendian: [%i]\n", img.addr, img.bits_per_pixel, img.size_line, img.endian);
+	make_rainbow(&img);
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img_ptr, 0, 0);
+
+	mlx_string_put(mlx_ptr, win_ptr, 450, 450, 0x00000000, "what's up homosexuals");
+
+	mlx_key_hook(win_ptr, hook_do_something, NULL);
 
 	mlx_loop(mlx_ptr);
 }
@@ -91,7 +102,7 @@ int	main(void)
 //	int	y;
 //	mlx_ptr = mlx_init();
 //	win_ptr = mlx_new_window(mlx_ptr, 720, 1440, "hello");
-//	img_ptr = mlx_xpm_file_to_image(mlx_ptr, "./test.c", &x, &y);
+//	img_ptr = mlx_xpm_file_to_image(mlx_ptr, "./test.xpm", &x, &y);
 //	if (!img)
 //	{
 //		perror("./test.c");
