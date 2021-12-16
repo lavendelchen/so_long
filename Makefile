@@ -6,35 +6,38 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/15 23:36:20 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/16 20:44:49 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME := so_long
 
-COMP = gcc -Wall -Wextra -Werror
+SRC := my_code/so_long.c my_code/error_message.c
 
-# comp -Lmlx_mac -lmlx_mac -framework OpenGL -framework AppKit test.c
-#
-# comp -l/usr/include -lmlx_linux -O3 -c test.c -o test.o
-# comp test.o -Lmlx_linux -lmlx_linux -L/usr/lib -lmlx_linux -lXext -lX11 -lm -lz
+OBJ := $(C_FILES:.c=.o)
 
-CODE_PATH = my_code/
+OS := $(shell uname)
 
-O_DIR = objects
+ifeq ($(OS),Darwin)
+	COMP := gcc -Wall -Wextra -Werror -Lmlx_mac -lmlx -framework OpenGL \
+	-framework AppKit $(SRC) -o $(NAME)
+else # doesnt work!!!!
+	COMP := gcc -Wall -Wextra -Werror -l/usr/include -lmlx_linux -O3 -c $(SRC) \
+	-o $(NAME) && gcc -Wall -Wextra -Werror $(NAME) -Lmlx_linux -lmlx_linux -L/usr/lib \
+	-lmlx_linux -lXext -lX11 -lm -lz
+endif
 
-C_FILES = my_code/so_long.c my_code/error_message.c
+CODE_PATH := my_code/
 
-O_FILES := $(addprefix $(O_DIR)/, $(C_FILES:.c=.o))
+O_DIR := objects
 
-BONUS_FILES =
+all: $(NAME)
 
-BONUS_O_FILES =  $(BONUS_FILES:.c=.o)
+trying:
+	$(COMP)
 
-all: $(NAME) bonus
-
-comp:
-	$(COMP) $(C_FILES)
+%.o: %.c
+	$(COMP) $<
 
 $(NAME): comp
 	ar rc $(NAME) $(O_FILES)
@@ -46,9 +49,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonuscomp:
-	$(COMP) $(BONUS_FILES)
-
-bonus: bonuscomp
-	ar rc $(NAME) $(BONUS_O_FILES)

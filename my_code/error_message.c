@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/14 20:45:48 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/16 20:43:28 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	error_exit(char *message, int is_error)
 	if (!is_error)
 		printf("Error: %s\n", message);
 	if (is_error)
-		perror("Error: " && message);
+		perror(message);
 	exit(EXIT_SUCCESS);
 }
