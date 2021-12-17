@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/17 02:25:28 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/17 02:41:59 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,12 @@ ifeq ($(OS),Darwin)
 	COMP1 := gcc -Wall -Wextra -Werror -c
 	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) -Lmlx_mac -lmlx -framework OpenGL \
 	-framework AppKit -o $(NAME)
+	MLX_DIR = mlx_mac
 else # doesnt work!!!!
 	COMP := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c $(SRC) \
 	-o $(NAME) && gcc -Wall -Wextra -Werror $(NAME) -Lmlx_linux -lmlx -L/usr/lib \
 	-lmlx_linux -lXext -lX11 -lm -lz
+	MLX_DIR = mlx_linux
 endif
 
 CODE_PATH := my_code/
@@ -47,6 +49,9 @@ $(NAME): $(OBJ)
 exec:
 	@printf $(MAGENTA)"*--------executing program!------------*\n"$(CL_RESET)
 	./$(NAME) $(MAP)
+
+mlx:
+	make -C $(MLX_DIR) # undone!!!
 
 clean:
 	rm -fr $(OBJ)
