@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 13:25:39 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/16 00:58:33 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/21 15:53:02 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int		ft_isalpha(int c);													//| checks if char  |
 int		ft_isascii(int c);													//| is certain type |
 int		ft_isdigit(int c);													//| of character    |
 int		ft_isprint(int c);													// -----------------
-int		ft_tolower(int c);													// / converts letter to \ 
-int		ft_toupper(int c);													// \ different case     /
+int		ft_tolower(int c);													// / converts letter to
+int		ft_toupper(int c);													// \ different case
 void	ft_putchar_fd(char c, int fd);										// ------------------------
 void	ft_putstr_fd(char *s, int fd);										//| print stuff to certain |
 void	ft_putendl_fd(char *s, int fd);										//| file descriptor        |//follow string with newline

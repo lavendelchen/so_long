@@ -6,14 +6,11 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/10 22:28:10 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/21 15:25:15 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <unistd.h>
-#include "mlx/mlx.h"
-#include <stdio.h>
+#include "../my_code/so_long.h"
 
 typedef struct	s_img_data
 {

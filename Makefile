@@ -6,34 +6,39 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/17 02:41:59 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/21 16:16:32 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# defines #
 NAME := so_long
 
 SRC := my_code/so_long.c my_code/error_message.c
+#SRC := dumb_projects/make_a_bi_uebergang_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
 
-MAP := 0
+PRINT_SYSTEM = 0
+
+CODE_PATH := my_code/
+
+MAP :=
 
 # check if mac or linux #
 OS := $(shell uname)
 
-ifeq ($(OS),Darwin)
+ifeq ($(OS), Darwin)
 	COMP1 := gcc -Wall -Wextra -Werror -c
 	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) -Lmlx_mac -lmlx -framework OpenGL \
 	-framework AppKit -o $(NAME)
 	MLX_DIR = mlx_mac
-else # doesnt work!!!!
-	COMP := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c $(SRC) \
-	-o $(NAME) && gcc -Wall -Wextra -Werror $(NAME) -Lmlx_linux -lmlx -L/usr/lib \
-	-lmlx_linux -lXext -lX11 -lm -lz
+endif
+ifeq ($(OS), Linux)
+	COMP1 := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
+	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) -Lmlx_linux -lmlx -L/usr/lib \
+	-lmlx -lXext -lX11 -lm -lz -o $(NAME)
 	MLX_DIR = mlx_linux
 endif
-
-CODE_PATH := my_code/
 
 # rules #
 all: $(NAME)
@@ -41,29 +46,43 @@ all: $(NAME)
 %.o: %.c
 	$(COMP1) $< -o $@
 
-$(NAME): $(OBJ)
-	@printf $(YELLOW)"*--------object files created!---------*\n"$(CL_RESET)
+$(NAME): print_system mlx libft $(OBJ)
+	@printf $(YELLOW)"*--------object files created!---------*\n\n"$(RESET)
 	$(COMP2)
-	@printf $(LIGHTGREEN)"*--------executable created!-----------*\n"$(CL_RESET)
+	@printf $(LIGHTGREEN)"*--------executable created!-----------*\n\n"$(RESET)
 
-exec:
-	@printf $(MAGENTA)"*--------executing program!------------*\n"$(CL_RESET)
+# print out which system we're on, will only be executed once \
+	even if called multiple times
+print_system:
+ifeq ($(PRINT_SYSTEM), 0)
+	$(eval PRINT_SYSTEM = 1)
+	@printf $(DARKGRAY)$(ITALIC)$(UNDERLINED)"We're on $(OS)\n\n"$(RESET)
+endif
+
+# rule for running program
+exec: print_system
+	@printf $(MAGENTA)"*--------executing program!------------*\n\n"$(RESET)
 	./$(NAME) $(MAP)
 
-mlx:
-	make -C $(MLX_DIR) # undone!!!
+mlx: print_system
+	@printf $(LIGHTBLUE)"*--------checking mlx...---------------*\n\n"$(RESET)
+	@make -C $(MLX_DIR) # need to check if works for mac
 
-clean:
+libft: print_system
+	@printf $(LIGHTBLUE)"*--------checking libft...-------------*\n\n"$(RESET)
+	@make -C libft/
+
+clean: print_system
 	rm -fr $(OBJ)
-	@printf $(RED)"*--------object files removed!---------*\n"$(CL_RESET)
+	@printf $(RED)"*--------object files removed!---------*\n\n"$(RESET)
 
 fclean: clean
 	rm -fr $(NAME)
-	@printf $(RED)"*--------$(NAME) removed!--------------*\n"$(CL_RESET)
+	@printf $(RED)"*--------$(NAME) removed!--------------*\n\n"$(RESET)
 
 re: fclean all
 
-# text colours #
+# text modifiers #
 RED = "\e[31m"
 
 GREEN = "\e[32m"
@@ -120,4 +139,10 @@ LIGHTMAGENTA_BG = "\e[105m"
 
 LIGHTCYAN_BG = "\e[106m"
 
-CL_RESET = "\e[0m"
+BOLD = "\e[1m"
+
+ITALIC = "\e[3m"
+
+UNDERLINED = "\e[4m"
+
+RESET = "\e[0m"
