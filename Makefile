@@ -6,15 +6,15 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/21 16:49:35 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/21 21:41:45 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # defines #
 NAME := so_long
 
-SRC := my_code/so_long.c my_code/error_message.c
-#SRC := dumb_projects/make_a_bi_uebergang_with_mlx.c
+#SRC := my_code/so_long.c my_code/error_message.c
+SRC := dumb_projects/make_a_pride_flag_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
 
@@ -35,15 +35,15 @@ ifeq ($(OS), Darwin)
 	MLX_DIR = mlx_mac
 	MLX = $(MLX_DIR)/libmlx.a
 	COMP1 := gcc -Wall -Wextra -Werror -c
-	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) $(MLX) -Lmlx_mac -lmlx -framework OpenGL \
-	-framework AppKit -o $(NAME)
+	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) $(MLX) -Lmlx_mac -lmlx \
+	-framework OpenGL -framework AppKit -o $(NAME)
 endif
 ifeq ($(OS), Linux)
 	MLX_DIR = mlx_linux
 	MLX = $(MLX_DIR)/libmlx.a
 	COMP1 := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
-	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) $(MLX) -Lmlx_linux -lmlx -L/usr/lib \
-	-lmlx -lXext -lX11 -lm -lz -o $(NAME)
+	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux \
+	-L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 endif
 
 
@@ -153,3 +153,9 @@ ITALIC = "\e[3m"
 UNDERLINED = "\e[4m"
 
 RESET = "\e[0m"
+
+# wsl: xming all
+
+# xming: print_system
+#	bash xming_init.sh
+#	@printf $(DARKGRAY)"*--------xming initiated---------------*\n\n"$(RESET)
