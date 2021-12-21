@@ -6,15 +6,16 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/21 21:41:45 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/21 21:46:34 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+MAP := 1
 
 # defines #
 NAME := so_long
 
-#SRC := my_code/so_long.c my_code/error_message.c
-SRC := dumb_projects/make_a_pride_flag_with_mlx.c
+SRC := my_code/so_long.c my_code/error_message.c
 
 OBJ := $(SRC:.c=.o)
 
@@ -22,9 +23,7 @@ PRINT_SYSTEM = 0
 
 CODE_DIR := my_code/
 
-MAP := 1
-
-LIBFT_DIR = libft
+LIBFT_DIR := libft
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
