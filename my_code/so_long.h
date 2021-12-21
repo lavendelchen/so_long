@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/21 15:22:36 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/21 16:21:05 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>			// exit()
 # include <errno.h>				// see if there's an error
 # include "keys.h"				// keyboard key names
+# include "../libft/libft.h"	// libft //
 # ifdef __APPLE__
 # include "../mlx_mac/mlx.h"	// mlx on mac //
 # endif

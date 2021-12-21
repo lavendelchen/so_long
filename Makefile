@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/21 16:16:32 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/21 16:49:35 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,25 +20,32 @@ OBJ := $(SRC:.c=.o)
 
 PRINT_SYSTEM = 0
 
-CODE_PATH := my_code/
+CODE_DIR := my_code/
 
-MAP :=
+MAP := 1
 
-# check if mac or linux #
+LIBFT_DIR = libft
+
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# check if mac or linux, compile mlx accordingly #
 OS := $(shell uname)
 
 ifeq ($(OS), Darwin)
-	COMP1 := gcc -Wall -Wextra -Werror -c
-	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) -Lmlx_mac -lmlx -framework OpenGL \
-	-framework AppKit -o $(NAME)
 	MLX_DIR = mlx_mac
+	MLX = $(MLX_DIR)/libmlx.a
+	COMP1 := gcc -Wall -Wextra -Werror -c
+	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) $(MLX) -Lmlx_mac -lmlx -framework OpenGL \
+	-framework AppKit -o $(NAME)
 endif
 ifeq ($(OS), Linux)
-	COMP1 := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
-	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) -Lmlx_linux -lmlx -L/usr/lib \
-	-lmlx -lXext -lX11 -lm -lz -o $(NAME)
 	MLX_DIR = mlx_linux
+	MLX = $(MLX_DIR)/libmlx.a
+	COMP1 := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
+	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) $(MLX) -Lmlx_linux -lmlx -L/usr/lib \
+	-lmlx -lXext -lX11 -lm -lz -o $(NAME)
 endif
+
 
 # rules #
 all: $(NAME)
@@ -70,7 +77,7 @@ mlx: print_system
 
 libft: print_system
 	@printf $(LIGHTBLUE)"*--------checking libft...-------------*\n\n"$(RESET)
-	@make -C libft/
+	@make -C $(LIBFT_DIR)
 
 clean: print_system
 	rm -fr $(OBJ)
