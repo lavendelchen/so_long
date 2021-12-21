@@ -1,6 +1,6 @@
 **COMPILATION ON WSL**
 for compilation to work on WSL, you're going to have to initiate XMING following the 
-"Getting a screen" section on this website: https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+"Getting a screen on WSL" section on this website: https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
 
 every time that you open vscode newly, you're going to have to type this:
 `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0`
