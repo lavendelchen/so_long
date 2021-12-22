@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/21 15:25:15 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/21 22:16:13 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	main(void)
 	t_img_data	img;
 
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Love is Love");
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "Love is Love");
 
-	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
+	img.img_ptr = mlx_new_image(mlx_ptr, 500, 500);
 	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
 	printf("address: [%s]\nbits per pixel: [%i]\nsize line: [%i]\nendian: [%i]\n", img.addr, img.bits_per_pixel, img.size_line, img.endian);
 
@@ -47,15 +47,15 @@ int	main(void)
 	int	i = 1;
 	long long rainbow[6] = {0x00FF0018, 0x00FFA52C, 0x00FFFF41, 0x00008018, 0x000000F9, 0x0086007D};
 
-	int	format = 167;
+	int	format = 83;
 	while (i <= 6)
 	{
 		while (y < format)
 		{
-			while (x < 1000)
+			while (x < 500)
 			{
-				if ((y + (167 * (i - 1))) < 1000)
-					my_mlx_pixel_put(&img, x, (y + (167 * (i - 1))), rainbow[i - 1]);
+				if ((y + (83 * (i - 1))) < 500)
+					my_mlx_pixel_put(&img, x, (y + (83 * (i - 1))), rainbow[i - 1]);
 				x++;
 			}
 			x = 0;
@@ -66,6 +66,7 @@ int	main(void)
 	}
 
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img_ptr, 0, 0);
+	mlx_string_put(mlx_ptr, win_ptr, 10, 10, 0x00FFFFFF, "whats up homosexuals");
 
 	mlx_loop(mlx_ptr);
 }

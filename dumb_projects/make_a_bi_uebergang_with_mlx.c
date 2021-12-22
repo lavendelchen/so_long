@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/21 16:36:58 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/21 22:39:32 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ int	main(void)
 	void		*win_ptr;
 	t_img_data	img;
 
+	printf("here");
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Love is Love");
+	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "Love is Love");
 
-	img.img_ptr = mlx_new_image(mlx_ptr, 1000, 1000);
+	img.img_ptr = mlx_new_image(mlx_ptr, 500, 500);
 	img.addr = mlx_get_data_addr(img.img_ptr, &img.bits_per_pixel, &img.size_line, &img.endian);
 
 	int	x = 0;
@@ -47,29 +48,29 @@ int	main(void)
 
 	while (bi_colours[0] != 0x00D000FF)
 	{
-		while (x < 1000)
+		while (x < 500)
 		{
-			if (y < 1000)
+			if (y < 500)
 				my_mlx_pixel_put(&img, x, y, bi_colours[0]);
 			x++;
 		}
 		x = 0;
 		y++;
-		if (y % 3 == 0)
+		if (y % 2 == 0)
 			bi_colours[0]++;
 	}
 	while (bi_colours[0] != 0x000000FF)
 	{
-		while (x < 1000)
+		while (x < 500)
 		{
-			if (y < 1000)
+			if (y < 500)
 				my_mlx_pixel_put(&img, x, y, bi_colours[0]);
 			x++;
 		}
 		x = 0;
 		y++;
-		if (y % 3 == 0)
-			bi_colours[0] -= 0x00010000;
+		if (y % 2 == 0)
+			bi_colours[0] -= 0x0005000;
 	}
 	printf("y = [%i]\n", y);
 

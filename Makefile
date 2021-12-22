@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/21 21:46:34 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/22 19:09:30 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ MAP := 1
 # defines #
 NAME := so_long
 
-SRC := my_code/so_long.c my_code/error_message.c
+#SRC := my_code/so_long.c my_code/error_message.c
+SRC := dumb_projects/make_a_bi_flag_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
 
