@@ -4,8 +4,8 @@ for compilation to work on WSL, you're going to have to initiate XMING following
 
 now, you're gonna have to routinely do two things:
 * at every new start of your computer, launch XLaunch and follow the steps for it again.
-* every time that you open vscode newly, you're going to have to type this: <br>
+* for every new terminal, you're going to have to type this: <br>
 `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0` <br>
-into the command line before compiling and executing. 
-you can make an alias to make it easier, unfortunately i couldn't get it to work
+into the command line before compiling. 
+you can make an alias to make it easier, unfortunately i couldn't get it to work yet
 by just adding a rule in the Makefile.
