@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/21 22:16:13 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/22 19:37:02 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(void)
 	}
 
 	mlx_put_image_to_window(mlx_ptr, win_ptr, img.img_ptr, 0, 0);
-	mlx_string_put(mlx_ptr, win_ptr, 10, 10, 0x00FFFFFF, "whats up homosexuals");
+	//mlx_string_put(mlx_ptr, win_ptr, 10, 10, 0x00FFFFFF, "whats up homosexuals");
 
 	mlx_loop(mlx_ptr);
 }

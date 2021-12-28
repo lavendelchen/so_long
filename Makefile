@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/22 19:09:30 by shaas            ###   ########.fr        #
+#    Updated: 2021/12/28 15:39:26 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MAP := 1
 NAME := so_long
 
 #SRC := my_code/so_long.c my_code/error_message.c
-SRC := dumb_projects/make_a_bi_flag_with_mlx.c
+SRC := dumb_projects/make_a_pride_flag_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
 
@@ -53,7 +53,7 @@ all: $(NAME)
 %.o: %.c
 	$(COMP1) $< -o $@
 
-$(NAME): print_system mlx libft $(OBJ)
+$(NAME): print_system wsl mlx libft $(OBJ)
 	@printf $(YELLOW)"*--------object files created!---------*\n\n"$(RESET)
 	$(COMP2)
 	@printf $(LIGHTGREEN)"*--------executable created!-----------*\n\n"$(RESET)
@@ -78,6 +78,9 @@ mlx: print_system
 libft: print_system
 	@printf $(LIGHTBLUE)"*--------checking libft...-------------*\n\n"$(RESET)
 	@make -C $(LIBFT_DIR)
+
+wsl: # doesnt work yet :/
+	export DISPLAY=$$(cat /etc/resolv.conf | grep nameserver | awk '{print $$2}'):0.0
 
 clean: print_system
 	rm -fr $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/16 20:43:28 by shaas            ###   ########.fr       */
+/*   Updated: 2021/12/28 17:14:17 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@ personal one.*/
 void	error_exit(char *message, int is_error)
 {
 	if (!is_error)
-		printf("Error: %s\n", message);
+		printf("Error: %s", message);
 	if (is_error)
-		perror(message);
+		perror(ft_strlcat("Error: ", message, 20));
 	exit(EXIT_SUCCESS);
+}
+
+int main(void)
+{
+	char *message = "hello";
+	error_exit(message, 1);
 }
