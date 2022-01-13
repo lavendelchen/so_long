@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/13 21:11:39 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/13 22:12:21 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ void	check_for_errors(int argc, char *map)
 	
 	if (argc != 2)
 		error_exit("Need one map\n", 0);
-	ber = ft_strnstr(map, ".ber", maplen);
-	if (ber == NULL || ber[4] != '\0')
-	{
-		
-	}
-
+	ber = ft_strnstr(map, ".ber", UINT_MAX);
+	if (ber == NULL || ber[4] != '\0') // excludes stuff like affe.bergsteiger.ber but we ain't got time for funky shit like that
+		error_exit("Map doesn't end in .ber\n", 0);
 }
 
 /* this function looks if we have a system error or if it's just "personal",
@@ -38,7 +35,7 @@ void	error_exit(char *message, int is_syserror)
 		printf("Error\n%s", message); //should we add a backslash? not sure, don't get the error stuff anyway
 	if (is_syserror)
 	{
-		msg = ft_strjoin("Error\n", message);
+		msg = ft_strjoin("Error\n", message); // make colours!!
 		perror(msg);
 		free(msg);
 	}

@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/13 20:53:50 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/13 21:56:56 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>				// printf()
 # include <stdlib.h>			// exit()
 # include <errno.h>				// see if there's an error
+# include <limits.h>			// UINT_MAX
 # include "keys.h"				// keyboard key names
 # include "../libft/libft.h"	// libft //
 # ifdef __APPLE__

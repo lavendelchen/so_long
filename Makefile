@@ -6,11 +6,11 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/13 20:31:14 by shaas            ###   ########.fr        #
+#    Updated: 2022/01/13 23:38:01 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAP := affe.ber
+MAP := affe
 
 # defines #
 NAME := so_long
@@ -53,15 +53,15 @@ all: $(NAME)
 %.o: %.c
 	$(COMP1) $< -o $@
 
-$(NAME): print_system mlx libft $(OBJ)
+$(NAME): $(MLX) $(LIBFT) $(OBJ)
 	@printf $(YELLOW)"*--------object files created!---------*\n\n"$(RESET)
 	$(COMP2)
 	@printf $(LIGHTGREEN)"*--------executable created!-----------*\n\n"$(RESET)
 
 # print out which system we're on, will only be executed once \
 	even if called multiple times
-print_system:
 ifeq ($(PRINT_SYSTEM), 0)
+print_system:
 	$(eval PRINT_SYSTEM = 1)
 	@printf $(DARKGRAY)$(ITALIC)$(UNDERLINED)"We're on $(OS)\n\n"$(RESET)
 endif
@@ -74,13 +74,13 @@ exec: print_system
 # complies & runs immediately
 both: $(NAME) exec
 
-mlx: print_system
-	@printf $(LIGHTBLUE)"*--------checking mlx...---------------*\n\n"$(RESET)
-	@make -C $(MLX_DIR) # need to check if works for mac
+$(MLX): print_system
+	@printf $(LIGHTBLUE)"\n*--------checking mlx...---------------*\n"$(RESET)
+	@make -s -C $(MLX_DIR) # need to check if works for mac
 
-libft: print_system
-	@printf $(LIGHTBLUE)"*--------checking libft...-------------*\n\n"$(RESET)
-	@make -C $(LIBFT_DIR)
+$(LIBFT): print_system
+	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
+	@make -C $(LIBFT_DIR) #s oder nicht s, das ist hier die frage
 
 wsl: # doesnt work yet :/
 	export DISPLAY=$$(cat /etc/resolv.conf | grep nameserver | awk '{print $$2}'):0.0
