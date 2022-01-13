@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/28 15:48:16 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/13 20:54:10 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2)
-		error_exit("Need one map\n", 1);
+	check_for_errors(argc, argv[1]);
 	printf("%d\n", argc);
 	printf("%s\n", argv[1]);
-	printf("%ld\n", ft_strlen("hi!"));
 
 	void *mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)

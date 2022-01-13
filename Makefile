@@ -6,17 +6,17 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2021/12/28 15:39:26 by shaas            ###   ########.fr        #
+#    Updated: 2022/01/13 20:31:14 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAP := 1
+MAP := affe.ber
 
 # defines #
 NAME := so_long
 
-#SRC := my_code/so_long.c my_code/error_message.c
-SRC := dumb_projects/make_a_pride_flag_with_mlx.c
+SRC := my_code/error_stuff.c my_code/so_long.c
+#SRC := dumb_projects/make_a_pride_flag_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
 
@@ -53,7 +53,7 @@ all: $(NAME)
 %.o: %.c
 	$(COMP1) $< -o $@
 
-$(NAME): print_system wsl mlx libft $(OBJ)
+$(NAME): print_system mlx libft $(OBJ)
 	@printf $(YELLOW)"*--------object files created!---------*\n\n"$(RESET)
 	$(COMP2)
 	@printf $(LIGHTGREEN)"*--------executable created!-----------*\n\n"$(RESET)
@@ -71,6 +71,9 @@ exec: print_system
 	@printf $(MAGENTA)"*--------executing program!------------*\n\n"$(RESET)
 	./$(NAME) $(MAP)
 
+# complies & runs immediately
+both: $(NAME) exec
+
 mlx: print_system
 	@printf $(LIGHTBLUE)"*--------checking mlx...---------------*\n\n"$(RESET)
 	@make -C $(MLX_DIR) # need to check if works for mac
@@ -83,7 +86,8 @@ wsl: # doesnt work yet :/
 	export DISPLAY=$$(cat /etc/resolv.conf | grep nameserver | awk '{print $$2}'):0.0
 
 clean: print_system
-	rm -fr $(OBJ)
+	rm -fr my_code/*.o
+#	rm -fr $(OBJ)
 	@printf $(RED)"*--------object files removed!---------*\n\n"$(RESET)
 
 fclean: clean

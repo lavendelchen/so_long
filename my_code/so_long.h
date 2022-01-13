@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/11 21:39:10 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/13 20:53:50 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@
 # endif
 
 void	error_exit(char *message, int is_error);
+void	check_for_errors(int argc, char *map);
+
 
 #endif
