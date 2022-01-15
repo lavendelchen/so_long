@@ -6,23 +6,23 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/13 23:38:01 by shaas            ###   ########.fr        #
+#    Updated: 2022/01/15 02:30:22 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-MAP := affe
+MAP := affe.ber
 
 # defines #
 NAME := so_long
 
-SRC := my_code/error_stuff.c my_code/so_long.c
+SRC := src/error_stuff.c src/so_long.c src/get_next_line.c src/get_next_line_utils.c
 #SRC := dumb_projects/make_a_pride_flag_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
 
 PRINT_SYSTEM = 0
 
-CODE_DIR := my_code/
+CODE_DIR := src
 
 LIBFT_DIR := libft
 
