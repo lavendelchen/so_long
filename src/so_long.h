@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/15 02:21:11 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/16 03:48:31 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ char	*gnl_linejoin(char *old_line, char *add);
 int		gnl_find_newline(char *buffer);
 char	*get_next_line(int fd);		// 💭!!
 void	error_exit(char *message, int is_error);
+void	alloc_fail(void);
 void	check_for_errors(int argc, char *map);
+char	**parse_map(char *mapfile);
 
 
 #endif

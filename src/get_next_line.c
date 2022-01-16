@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:44:50 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/15 02:28:52 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/16 04:08:27 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,9 @@ static char	*split_remainder_1(char **line,
 	char **remainder, char **buffer, int newline)
 {
 	*line = gnl_substr(*remainder, 0, (newline + 1));
-	if (!(*line))
-		return (gnl_free_helper(line, remainder, NULL));
 	*buffer = gnl_substr(*remainder, (newline + 1), 1);
-	if (!(*buffer))
-		return (gnl_free_helper(line, remainder, NULL));
 	free (*remainder);
 	*remainder = gnl_substr(*buffer, 0, 1);
-	if (!(*remainder))
-		return (gnl_free_helper(line, remainder, buffer));
 	free (*buffer);
 	return (*line);
 }
@@ -33,15 +27,9 @@ static char	*split_remainder_2(char **line,
 	char **remainder, char **buffer, int newline)
 {
 	*remainder = gnl_substr(*buffer, 0, (newline + 1));
-	if (!(*remainder))
-		return (gnl_free_helper(remainder, buffer, line));
 	*line = gnl_linejoin(*line, *remainder);
-	if (!(*line))
-		return (gnl_free_helper(buffer, NULL, NULL));
 	free (*remainder);
 	*remainder = gnl_substr(*buffer, (newline + 1), 1);
-	if (!(*remainder))
-		return (gnl_free_helper(remainder, buffer, line));
 	free (*buffer);
 	return (*line);
 }
@@ -55,7 +43,7 @@ static char	*reader(int fd, char **remainder, char **buffer, char **line)
 	{
 		bytes_read = read(fd, *buffer, 1);
 		if (bytes_read < 0)
-			return (gnl_free_helper(remainder, buffer, line));
+			error_exit("Failure parsing map", 0);
 		if (bytes_read == 0)
 		{
 			gnl_free_helper(buffer, NULL, NULL);
@@ -68,8 +56,6 @@ static char	*reader(int fd, char **remainder, char **buffer, char **line)
 		if (newline != -1)
 			return (split_remainder_2(line, remainder, buffer, newline));
 		*line = gnl_linejoin(*line, *buffer);
-		if (!(*line))
-			return (gnl_free_helper(buffer, NULL, NULL));
 	}
 }
 
@@ -85,12 +71,10 @@ char	*get_next_line(int fd)
 		return (split_remainder_1(&line, &remainder, &buffer, newline));
 	buffer = (char *)malloc((sizeof(char) * 1) + 1);
 	line = (char *)malloc(sizeof(char) * 1);
-	if (!buffer || !line || fd < 0)
-		return (gnl_free_helper(&remainder, &buffer, &line));
+	if (!buffer || !line)
+		alloc_fail();
 	line[0] = '\0';
 	line = gnl_linejoin(line, remainder);
-	if (!line)
-		return (gnl_free_helper(&buffer, NULL, NULL));
 	gnl_free_helper(&remainder, NULL, NULL);
 	return (reader(fd, &remainder, &buffer, &line));
 }

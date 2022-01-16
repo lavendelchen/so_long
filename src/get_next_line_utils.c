@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 16:20:37 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/15 02:29:45 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/16 03:49:57 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*gnl_substr(const char *s, unsigned int start, size_t len)
 		i++;
 	subs = (char *)malloc(sizeof(char) * (i + 1));
 	if (!subs)
-		return (NULL);
+		alloc_fail();
 	while (j < i)
 	{
 		subs[j] = s[j + start];
@@ -83,7 +83,7 @@ char	*gnl_linejoin(char *old_line, char *add)
 	len_2 = gnl_strlen(add);
 	new_line = (char *)malloc(sizeof(char) * (len_1 + len_2 + 1));
 	if (!new_line)
-		return (gnl_free_helper(&old_line, &add, NULL));
+		alloc_fail();
 	while (old_line[j] != '\0')
 		new_line[i++] = old_line[j++];
 	while (*add != '\0')
