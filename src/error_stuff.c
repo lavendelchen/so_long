@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/19 23:32:53 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/20 03:36:10 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	error_exit(char *message, int is_syserror)
 		free(msg);
 	}
 	exit(EXIT_SUCCESS);
+}
+
+void	alloc_fail(void)
+{
+	error_exit("Allocation failure\n", 0);
 }
 
 void	check_for_errors(int argc, char *map)

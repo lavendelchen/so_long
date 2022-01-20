@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 23:31:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 02:03:14 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/20 02:13:14 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	item_numbers(char *map)
 }
 
 /*btw! your map can have as many empty lines before, after and in between
-the map as you want. ft_split gets rid of them.*/
+the map as you want. ft_split gets rid of them. maybe i should change this?*/
 static void	is_rectangular(t_map *mapinfo)
 {
 	size_t	i;
