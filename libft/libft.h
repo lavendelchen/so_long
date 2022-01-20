@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 13:25:39 by shaas             #+#    #+#             */
-/*   Updated: 2021/12/21 15:53:02 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/16 15:26:30 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/*the so_long version of libft is different in that functions that allocate memory
+don't return NULL or 0 in case of an allocation failure, exit the process instead*/
 typedef struct s_list
 {
 	void			*content;
@@ -51,6 +53,7 @@ size_t	ft_strlen(const char *s);											// returns length of string
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);	// finds string in other string
 int		ft_atoi(const char *str);											// converts string to integer
 char	*ft_itoa(int n);													// converts integer to string
+void	*ft_malloc(size_t size);											// allocates mem, and immediately checks for alloc fail & quits in that case
 void	*ft_calloc(size_t count, size_t size);								// 💭 allocates mem + sets it to \0
 char	*ft_substr(const char *s, unsigned int start, size_t len);			// 💭 allocates part of string (choose freely)
 char	*ft_strtrim(const char *s1, const char *set);						// 💭 allocates trimmed string (complicated lol, meaning it trims chars from set from front and end)

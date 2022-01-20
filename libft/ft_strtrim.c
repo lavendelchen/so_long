@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 14:34:43 by shaas             #+#    #+#             */
-/*   Updated: 2021/07/06 13:14:49 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/16 15:30:13 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	j = 0;
 	k = 0;
 	len = ft_strlen(s1);
-	trim = (char *)malloc(len + 1);
-	if (trim == NULL)
-		return (trim);
+	trim = (char *)ft_malloc(len + 1);
 	while (ft_strchr(set, s1[i]) != NULL && s1[i] != '\0')
 		i++;
 	while (ft_strchr(set, s1[len - 1 - j]) != NULL && s1[i] != '\0')

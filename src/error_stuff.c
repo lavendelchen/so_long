@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 03:48:04 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/19 23:32:53 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,10 @@ void	error_exit(char *message, int is_syserror)
 	if (is_syserror)
 	{
 		msg = ft_strjoin("\e[31m\e[3mError\e[0m\n", message);
-		if (!msg)
-			alloc_fail();
 		perror(msg);
 		free(msg);
 	}
 	exit(EXIT_SUCCESS);
-}
-
-void	alloc_fail(void)
-{
-	error_exit("Allocation Failure", 0);
 }
 
 void	check_for_errors(int argc, char *map)

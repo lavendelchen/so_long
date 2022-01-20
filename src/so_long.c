@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 04:06:28 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/20 01:39:25 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int argc, char **argv)
 {
-	//char **map;
+	t_map	mapinfo;
 	
 	check_for_errors(argc, argv[1]);
-	parse_map(argv[1]);
+	get_map(argv[1], &mapinfo);
 
 	void *mlx_ptr = mlx_init();
 	if (mlx_ptr == NULL)

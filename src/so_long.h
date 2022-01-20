@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 03:48:31 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/20 01:47:56 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 #  include "../mlx_linux/mlx.h"	// mlx on linux //
 # endif
 
+typedef struct s_map
+{
+	char	**map;
+	char	*strmap;
+	size_t	rowlen;
+	size_t	collen;
+}				t_map;
+
 char	*gnl_free_helper(char **str1, char **str2, char **str3);
 size_t	gnl_strlen(const char *s);
 char	*gnl_substr(const char *s, unsigned int start, size_t len);
@@ -37,7 +45,8 @@ char	*get_next_line(int fd);		// 💭!!
 void	error_exit(char *message, int is_error);
 void	alloc_fail(void);
 void	check_for_errors(int argc, char *map);
-char	**parse_map(char *mapfile);
+void	get_map(char *mapfile, t_map *mapinfo);
+void	map_errors(t_map *mapinfo);
 
 
 #endif

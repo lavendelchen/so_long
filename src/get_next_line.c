@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:44:50 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 04:08:27 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/16 15:34:49 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ char	*get_next_line(int fd)
 	newline = gnl_find_newline(remainder);
 	if (newline != -1)
 		return (split_remainder_1(&line, &remainder, &buffer, newline));
-	buffer = (char *)malloc((sizeof(char) * 1) + 1);
-	line = (char *)malloc(sizeof(char) * 1);
-	if (!buffer || !line)
-		alloc_fail();
+	buffer = (char *)ft_malloc((sizeof(char) * 1) + 1);
+	line = (char *)ft_malloc(sizeof(char) * 1);
 	line[0] = '\0';
 	line = gnl_linejoin(line, remainder);
 	gnl_free_helper(&remainder, NULL, NULL);

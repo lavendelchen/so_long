@@ -6,13 +6,13 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 16:44:37 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 04:14:35 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/20 01:48:19 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**parse_map(char *mapfile)
+static void	parse_map(char *mapfile, t_map *mapinfo)
 {
 	int		fd;
 	char	*line;
@@ -23,23 +23,34 @@ char	**parse_map(char *mapfile)
 	if (fd == -1)
 		error_exit("open fail", 1);
 	buffer1 = ft_calloc(1, sizeof(char) * 1);
-	if (!buffer1)
-		alloc_fail();
-	while ((line = get_next_line(fd)) != NULL)
+	line = ft_calloc(1, sizeof(char) * 1);
+	while (line != NULL)
 	{
-		buffer2 = ft_strjoin(buffer1, line);
-		if (!buffer2)
-			alloc_fail();
-		printf("[%s]\n", buffer2);
 		free(line);
+		line = get_next_line(fd);
+		buffer2 = ft_strjoin(buffer1, line);
 		free(buffer1);
 		buffer1 = buffer2;
-		printf("here\n");
 	}
 	close(fd);
-	free(line);
-	free(buffer1); //buffer1 now allocated!!
-	return (NULL);
+	mapinfo->map = ft_split(buffer1, '\n');
+	mapinfo->strmap = buffer1;
 }
 
-//malloc checks? in every function!!!. every allocated thing needs to be freed before exiting. check for that
+static void	get_mapdata(t_map *mapinfo)
+{
+	size_t	i;
+
+	i = 0;
+	mapinfo->rowlen = ft_strlen(mapinfo->map[0]);
+	while (mapinfo->map[i] != NULL)
+		i++;
+	mapinfo->collen = i;
+}
+
+void	get_map(char *mapfile, t_map *mapinfo)
+{
+	parse_map(mapfile, mapinfo); //map & strmap are allocated
+	get_mapdata(mapinfo); //gets rowlen and collen
+	map_errors(mapinfo);
+}
