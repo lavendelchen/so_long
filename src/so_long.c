@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 04:01:33 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/21 22:57:50 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ int	main(int argc, char **argv)
 
 	int img_width1;
 	int img_height1;
-	void *img_ptr1 = mlx_xpm_file_to_image(mlx_ptr, "xpm/02.xpm", &img_width1, &img_height1);
+	void *img_ptr1 = mlx_xpm_file_to_image(mlx_ptr, "xpm/0_64.xpm", &img_width1, &img_height1);
+	printf("width: %d\n", img_width1);
+	printf("height: %d\n", img_height1);
+	printf("\r    hi             ");
+	printf("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
 	int i = 0;
 	int j = 0;
 	while (j * img_height1 < 1000)
@@ -42,9 +46,11 @@ int	main(int argc, char **argv)
 		j++;
 	}
 	
+	sleep(5);
 	int img_width2;
 	int img_height2;
-	void *img_ptr2 = mlx_xpm_file_to_image(mlx_ptr, "xpm/12.xpm", &img_width2, &img_height2);
+
+	void *img_ptr2 = mlx_xpm_file_to_image(mlx_ptr, "xpm/1_64.xpm", &img_width2, &img_height2);
 	i = 0;
 	j = 0;
 	while (j * img_height2 < 1000)
@@ -57,6 +63,20 @@ int	main(int argc, char **argv)
 			i++;
 		}
 		j++;
+	}
+
+	int img_width3;
+	int img_height3;
+	i = 1;
+	void *img_ptr3;
+	char *exits[8] = {"xpm/E0_64.xpm", "xpm/E1_64.xpm", "xpm/C0_64.xpm", "xpm/C1_64.xpm", "xpm/C2_64.xpm", "xpm/C3_64.xpm", "xpm/P_64.xpm", "xpm/X_64.xpm"};
+
+	while (i <= 8)
+	{
+		img_ptr3 = mlx_xpm_file_to_image(mlx_ptr, exits[i - 1], &img_width3, &img_height3);
+		mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr3, 64 * (4 + i), 64 * 5);
+		free (img_ptr3);
+		i++;
 	}
 	mlx_loop(mlx_ptr);
 }
