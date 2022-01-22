@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 13:25:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 15:26:30 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/22 10:19:53 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_putnbr_fd(int n, int fd);										// ------------------------
 void	*ft_memchr(const void *s, int c, size_t n);							// finds char in mem
 char	*ft_strchr(const char *s, int c);									// finds char in string
 char	*ft_strrchr(const char *s, int c);									// finds last occurence of char in string
+int		ft_countchr(const char *s, int c);									// counts how many times char is in str
 void	*ft_memset(void *b, int c, size_t len);								// makes mem one specific char
 void	ft_bzero(void *s, size_t n);										// makes mem \0
 int		ft_memcmp(const void *s1, const void *s2, size_t n);				// compare memory, return difference

@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 01:47:56 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/22 10:33:38 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_map
 	char	*strmap;
 	size_t	rowlen;
 	size_t	collen;
+	int		collect;
+	char	**exits;
 }				t_map;
 
 char	*gnl_free_helper(char **str1, char **str2, char **str3);

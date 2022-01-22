@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 16:44:37 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 01:48:19 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/22 10:38:42 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,19 @@ static void	parse_map(char *mapfile, t_map *mapinfo)
 static void	get_mapdata(t_map *mapinfo)
 {
 	size_t	i;
+	size_t	y;
+	size_t	x;
 
 	i = 0;
 	mapinfo->rowlen = ft_strlen(mapinfo->map[0]);
 	while (mapinfo->map[i] != NULL)
 		i++;
 	mapinfo->collen = i;
+	mapinfo->collect = ft_countchr(mapinfo->strmap, 'C');
+	y = 0;
+	x = 0;
+	
+	printf("collect: %i\n", mapinfo->collect);
 }
 
 void	get_map(char *mapfile, t_map *mapinfo)

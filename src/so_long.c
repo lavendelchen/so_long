@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/21 22:57:50 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/21 23:13:47 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	int img_height3;
 	i = 1;
 	void *img_ptr3;
-	char *exits[8] = {"xpm/E0_64.xpm", "xpm/E1_64.xpm", "xpm/C0_64.xpm", "xpm/C1_64.xpm", "xpm/C2_64.xpm", "xpm/C3_64.xpm", "xpm/P_64.xpm", "xpm/X_64.xpm"};
+	char *exits[8] = {"xpm/E0_64.xpm", "xpm/E1_64.xpm", "xpm/C0_64.xpm", "xpm/C1_64.xpm", "xpm/C2_64.xpm", "xpm/C3_64.xpm", "xpm/P_64.xpm", "xpm/END_256.xpm"};
 
 	while (i <= 8)
 	{
