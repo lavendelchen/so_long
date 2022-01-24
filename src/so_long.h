@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/22 10:33:38 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/24 17:20:19 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # ifdef __linux__
 #  include "../mlx_linux/mlx.h"	// mlx on linux //
 # endif
-
 typedef struct s_map
 {
 	char	**map;
@@ -35,8 +34,27 @@ typedef struct s_map
 	size_t	rowlen;
 	size_t	collen;
 	int		collect;
-	char	**exits;
+	size_t	**exits;
+	int		exitcount;
 }				t_map;
+typedef struct s_img
+{
+	void	*space;
+	void	*wall;
+	void	*coll[4];
+	void	*exit[2];
+	void	*player;
+	void	*dead;
+	void	*end;
+}				t_img;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_map	*mapinfo;
+	t_img	*images;
+}				t_mlx;
 
 char	*gnl_free_helper(char **str1, char **str2, char **str3);
 size_t	gnl_strlen(const char *s);
@@ -49,6 +67,8 @@ void	alloc_fail(void);
 void	check_for_errors(int argc, char *map);
 void	get_map(char *mapfile, t_map *mapinfo);
 void	map_errors(t_map *mapinfo);
+void	create_images(t_img *images, void *mlx_ptr);
+void	create_window(t_mlx *all);
 
 
 #endif

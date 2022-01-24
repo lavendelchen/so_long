@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 23:31:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 02:13:14 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/24 15:30:14 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,4 @@ void	map_errors(t_map *mapinfo)
 	item_numbers(mapinfo->strmap);
 	is_rectangular(mapinfo);
 	surrounded_by_walls(mapinfo);
-	printf("\e[92mhi?\e[0m\n");
 }
