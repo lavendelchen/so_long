@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_stuff.c                                      :+:      :+:    :+:   */
+/*   create_images.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:50:54 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/24 16:33:46 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/26 14:35:12 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void	*my_xpm_file_to_image(void *mlx_ptr, char *filename, int *w, int *h)
 
 void	create_images(t_img *images, void *mlx_ptr)
 {
-	int	w;
-	int	h;
+	int		w;
+	int		h;
 
 	images->space = my_xpm_file_to_image(mlx_ptr, "xpm/0_64.xpm", &w, &h);
 	images->wall = my_xpm_file_to_image(mlx_ptr, "xpm/1_64.xpm", &w, &h);

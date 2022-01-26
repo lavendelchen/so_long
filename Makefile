@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/24 16:48:06 by shaas            ###   ########.fr        #
+#    Updated: 2022/01/26 19:34:59 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MAP := affe.ber
 NAME := so_long
 
 SRC := src/error_stuff.c src/so_long.c src/get_next_line.c src/get_next_line_utils.c \
-src/get_map.c src/map_errors.c src/create_images.c src/create_window.c
+src/get_map.c src/map_errors.c src/create_images.c src/create_window.c src/hooks.c
 #SRC := dumb_projects/make_a_pride_flag_with_mlx.c
 
 OBJ := $(SRC:.c=.o)
@@ -35,15 +35,15 @@ OS := $(shell uname)
 ifeq ($(OS), Darwin)
 	MLX_DIR = mlx_mac
 	MLX = $(MLX_DIR)/libmlx.a
-	COMP1 := gcc -Wall -Wextra -Werror -c
-	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) $(MLX) -Lmlx_mac -lmlx \
+	COMP1 := gcc -Wall -Wextra -Werror -g -c
+	COMP2 := gcc -Wall -Wextra -Werror -g $(OBJ) $(LIBFT) $(MLX) -Lmlx_mac -lmlx \
 	-framework OpenGL -framework AppKit -o $(NAME)
 endif
 ifeq ($(OS), Linux)
 	MLX_DIR = mlx_linux
 	MLX = $(MLX_DIR)/libmlx.a
-	COMP1 := gcc -Wall -Wextra -Werror -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
-	COMP2 := gcc -Wall -Wextra -Werror $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux \
+	COMP1 := gcc -Wall -Wextra -Werror -g -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
+	COMP2 := gcc -Wall -Wextra -Werror -g $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux \
 	-L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 endif
 
@@ -87,7 +87,7 @@ wsl: # doesnt work yet :/
 	export DISPLAY=$$(cat /etc/resolv.conf | grep nameserver | awk '{print $$2}'):0.0
 
 clean: print_system
-	rm -fr my_code/*.o
+	rm -fr src/*.o
 #	rm -fr $(OBJ)
 	@printf $(RED)"*--------object files removed!---------*\n\n"$(RESET)
 
