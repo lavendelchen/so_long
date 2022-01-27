@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:50:54 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/26 14:35:12 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/27 15:43:48 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	*my_xpm_file_to_image(void *mlx_ptr, char *filename, int *w, int *h)
 
 	img_ptr = mlx_xpm_file_to_image(mlx_ptr, filename, w, h);
 	if (img_ptr == NULL)
-		alloc_fail();
+		error_exit("Failed to create image\n", 0);
 	return (img_ptr);
 }
 
@@ -36,6 +36,6 @@ void	create_images(t_img *images, void *mlx_ptr)
 	images->exit[0] = my_xpm_file_to_image(mlx_ptr, "xpm/e0_64.xpm", &w, &h);
 	images->exit[1] = my_xpm_file_to_image(mlx_ptr, "xpm/e1_64.xpm", &w, &h);
 	images->player = my_xpm_file_to_image(mlx_ptr, "xpm/p_64.xpm", &w, &h);
-	images->dead = my_xpm_file_to_image(mlx_ptr, "xpm/x_64.xpm", &w, &h);
+	images->blood = my_xpm_file_to_image(mlx_ptr, "xpm/x_64.xpm", &w, &h);
 	images->end = my_xpm_file_to_image(mlx_ptr, "xpm/end_256.xpm", &w, &h);
 }

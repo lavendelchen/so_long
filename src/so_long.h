@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/26 19:33:57 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/27 15:43:25 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_img
 	void	*coll[4];
 	void	*exit[2];
 	void	*player;
-	void	*dead;
+	void	*blood;
 	void	*end;
 }				t_img;
 
@@ -74,7 +74,8 @@ char	*gnl_substr(const char *s, unsigned int start, size_t len);
 char	*gnl_linejoin(char *old_line, char *add);
 int		gnl_find_newline(char *buffer);
 char	*get_next_line(int fd);		// 💭!!
-void	error_exit(char *message, int is_error);
+void	error_exit(char *message, int is_syserror);
+void	free_everything(t_mlx *all);
 void	alloc_fail(void);
 void	check_for_errors(int argc, char *map);
 void	get_map(char *mapfile, t_map *mapinfo);

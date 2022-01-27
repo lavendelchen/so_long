@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:03:22 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 03:33:50 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/26 19:50:44 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_malloc(size_t size)
 	if (!ptr)
 	{
 		printf("\e[91m\e[3mError\e[0m\nAllocation Failure");
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	}
 	return (ptr);
 }

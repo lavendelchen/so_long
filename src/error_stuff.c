@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_stuff.c                                      :+:      :+:    :+:   */
+/*   exit_stuff.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/20 03:36:10 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/26 20:34:49 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	error_exit(char *message, int is_syserror)
 		perror(msg);
 		free(msg);
 	}
-	exit(EXIT_SUCCESS);
+	exit(EXIT_FAILURE);
 }
 
 void	alloc_fail(void)

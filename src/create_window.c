@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:44:07 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/26 16:39:40 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/27 04:59:25 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	place_tile2(int y, int x, t_mlx *all, char tile)
 		if (count == 4)
 			count = 0;
 	}
-	if (tile == 'P')
+	else if (tile == 'P')
 	{
 		mlx_put_image_to_window(all->mlx_ptr, all->win_ptr, \
 		all->images.player, x * 64, y * 64);
