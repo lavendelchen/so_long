@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:14:55 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/27 16:51:23 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/28 15:37:51 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	go_in_direction(int y_pos, int x_pos, t_mlx *all)
 	else if (all->mapinfo.map[y_pos][x_pos] == 'E')
 	{
 		if (all->player.ready == 0)
-			move_player(all, &all->player, y_pos, x_pos);
+			return ;
 		if (all->player.ready == 1)
 		{
 			if (all->mapinfo.map[all->player.y][all->player.x] == '0')
@@ -80,8 +80,9 @@ static void	go_in_direction(int y_pos, int x_pos, t_mlx *all)
 			mlx_put_image_to_window(all->mlx_ptr, all->win_ptr, \
 			all->images.end, ((all->mapinfo.rowlen / 2) * 64) - (2 * 64), \
 			(all->mapinfo.collen / 2) * 64);
+			printf("Yes, that should work.\n");
 			//sleep(5);
-			printf("\e[91mY\e[95mO\e[94mU \e[96mW\e[92mO\e[93mN\e[37m!\e[0m\n");
+			//printf("\e[91mY\e[95mO\e[94mU \e[96mW\e[92mO\e[93mN\e[37m!\e[0m\n");
 			exit(EXIT_SUCCESS);
 		}
 	}
