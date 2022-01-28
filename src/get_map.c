@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 16:44:37 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/28 15:35:22 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/28 15:43:24 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static void	get_itemdata(t_map *mapinfo)
 	mapinfo->exitcount = ft_countchr(mapinfo->strmap, 'E');
 	mapinfo->exits = ft_malloc(sizeof (size_t *) * mapinfo->exitcount);
 	y = 0;
-	x = 0;
 	i = 0;
 	while (y < mapinfo->collen)
 	{
