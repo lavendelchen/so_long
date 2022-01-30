@@ -7,5 +7,5 @@ now, you're gonna have to routinely do two things:
 * for every new terminal, you're going to have to type this: <br>
 `export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0` <br>
 into the command line before compiling. 
-you can make an alias to make it easier, unfortunately i couldn't get it to work yet
+you can make an alias in `.bashrc` to make it easier, unfortunately i couldn't get it to work yet
 by just adding a rule in the Makefile.

@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 16:44:50 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/16 15:34:49 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/30 16:57:14 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*reader(int fd, char **remainder, char **buffer, char **line)
 	{
 		bytes_read = read(fd, *buffer, 1);
 		if (bytes_read < 0)
-			error_exit("Failure parsing map", 0);
+			error_exit("Failure parsing map\n", 0);
 		if (bytes_read == 0)
 		{
 			gnl_free_helper(buffer, NULL, NULL);
