@@ -6,13 +6,13 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 16:44:37 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/28 15:43:24 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/30 05:10:11 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	parse_map(char *mapfile, t_map *mapinfo)
+static void	parse_map(char *mapfile, t_map *map)
 {
 	int		fd;
 	char	*line;
@@ -33,31 +33,31 @@ static void	parse_map(char *mapfile, t_map *mapinfo)
 		buffer1 = buffer2;
 	}
 	close(fd);
-	mapinfo->map = ft_split(buffer1, '\n');
-	mapinfo->strmap = buffer1;
+	map->map = ft_split(buffer1, '\n');
+	map->strmap = buffer1;
 }
 
-static void	get_itemdata(t_map *mapinfo)
+static void	get_itemdata(t_map *map)
 {
 	size_t	y;
 	size_t	x;
 	size_t	i;
 
-	mapinfo->collect = ft_countchr(mapinfo->strmap, 'C');
-	mapinfo->exitcount = ft_countchr(mapinfo->strmap, 'E');
-	mapinfo->exits = ft_malloc(sizeof (size_t *) * mapinfo->exitcount);
+	map->collect = ft_countchr(map->strmap, 'C');
+	map->exitcount = ft_countchr(map->strmap, 'E');
+	map->exits = ft_malloc(sizeof (size_t *) * map->exitcount);
 	y = 0;
 	i = 0;
-	while (y < mapinfo->collen)
+	while (y < map->y_len)
 	{
 		x = 0;
-		while (x < mapinfo->rowlen)
+		while (x < map->x_len)
 		{
-			if (mapinfo->map[y][x] == 'E')
+			if (map->map[y][x] == 'E')
 			{
-				mapinfo->exits[i] = ft_malloc(sizeof (size_t) * 2);
-				mapinfo->exits[i][0] = y;
-				mapinfo->exits[i++][1] = x;
+				map->exits[i] = ft_malloc(sizeof (size_t) * 2);
+				map->exits[i][0] = y;
+				map->exits[i++][1] = x;
 			}
 			x++;
 		}
@@ -65,21 +65,21 @@ static void	get_itemdata(t_map *mapinfo)
 	}
 }
 
-static void	get_mapdata(t_map *mapinfo)
+static void	get_mapdata(t_map *map)
 {
 	size_t	i;
 
 	i = 0;
-	mapinfo->rowlen = ft_strlen(mapinfo->map[0]);
-	while (mapinfo->map[i] != NULL)
+	map->x_len = ft_strlen(map->map[0]);
+	while (map->map[i] != NULL)
 		i++;
-	mapinfo->collen = i;
+	map->y_len = i;
 }
 
-void	get_map(char *mapfile, t_map *mapinfo)
+void	get_map(char *mapfile, t_map *map)
 {
-	parse_map(mapfile, mapinfo); //map & strmap are allocated
-	get_mapdata(mapinfo);
-	map_errors(mapinfo);
-	get_itemdata(mapinfo); //exits will be allocated
+	parse_map(mapfile, map);
+	get_mapdata(map);
+	map_errors(map);
+	get_itemdata(map);
 }

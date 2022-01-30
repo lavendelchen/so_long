@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 23:31:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/24 15:30:14 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/30 05:10:11 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,38 +39,38 @@ static void	item_numbers(char *map)
 
 /*btw! your map can have as many empty lines before, after and in between
 the map as you want. ft_split gets rid of them. maybe i should change this?*/
-static void	is_rectangular(t_map *mapinfo)
+static void	is_rectangular(t_map *map)
 {
 	size_t	i;
 
 	i = 1;
-	while (mapinfo->map[i] != NULL)
+	while (map->map[i] != NULL)
 	{
-		if (mapinfo->rowlen != ft_strlen(mapinfo->map[i]))
+		if (map->x_len != ft_strlen(map->map[i]))
 			error_exit("Map must be rectangular\n", 0);
 		i++;
 	}
 }
 
-static void	surrounded_by_walls(t_map *mapinfo)
+static void	surrounded_by_walls(t_map *map)
 {
 	size_t	i;
 	char	*msg;
 
 	i = 0;
 	msg = "Map must be completely surrounded by walls\n";
-	while (i < mapinfo->rowlen)
+	while (i < map->x_len)
 	{
-		if (mapinfo->map[0][i] != '1' ||
-			mapinfo->map[mapinfo->collen - 1][i] != '1')
+		if (map->map[0][i] != '1' ||
+			map->map[map->y_len - 1][i] != '1')
 			error_exit(msg, 0);
 		i++;
 	}
 	i = 0;
-	while (i < mapinfo->collen)
+	while (i < map->y_len)
 	{
-		if (mapinfo->map[i][0] != '1' ||
-			mapinfo->map[i][mapinfo->rowlen - 1] != '1')
+		if (map->map[i][0] != '1' ||
+			map->map[i][map->x_len - 1] != '1')
 			error_exit(msg, 0);
 		i++;
 	}
@@ -79,10 +79,10 @@ static void	surrounded_by_walls(t_map *mapinfo)
 /*spointer stands for single pointer, dpointer for double pointer.
 to check some criteria of a valid map, the huge string is easier to check
 than the string array.*/
-void	map_errors(t_map *mapinfo)
+void	map_errors(t_map *map)
 {
-	invalid_chars(mapinfo->strmap);
-	item_numbers(mapinfo->strmap);
-	is_rectangular(mapinfo);
-	surrounded_by_walls(mapinfo);
+	invalid_chars(map->strmap);
+	item_numbers(map->strmap);
+	is_rectangular(map);
+	surrounded_by_walls(map);
 }

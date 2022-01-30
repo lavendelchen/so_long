@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/26 20:36:23 by shaas            ###   ########.fr        #
+#    Updated: 2022/01/29 19:41:33 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ MAP := affe.ber
 NAME := so_long
 
 SRC := src/so_long.c src/error_stuff.c src/get_next_line.c src/get_next_line_utils.c \
-src/get_map.c src/map_errors.c src/create_images.c src/create_window.c src/hooks.c
-#SRC := dumb_projects/make_a_pride_flag_with_mlx.c
+src/get_map.c src/map_errors.c src/create_images.c src/create_window.c src/hooks.c \
+src/win.c
 
 OBJ := $(SRC:.c=.o)
 
@@ -161,9 +161,3 @@ ITALIC = "\e[3m"
 UNDERLINED = "\e[4m"
 
 RESET = "\e[0m"
-
-# wsl: xming all
-
-# xming: print_system
-#	bash xming_init.sh
-#	@printf $(DARKGRAY)"*--------xming initiated---------------*\n\n"$(RESET)

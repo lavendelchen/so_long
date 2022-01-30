@@ -1,17 +1,17 @@
 //doesnt work!!!
 
-static void	free_images(t_img *images)
+static void	free_images(t_img *img)
 {
-	free(images->space);
-	free(images->wall);
-	free(images->coll[0]);
-	free(images->coll[1]);
-	free(images->coll[2]);
-	free(images->coll[3]);
-	free(images->exit[0]);
-	free(images->exit[1]);
-	free(images->blood);
-	free(images->end);
+	free(img->space);
+	free(img->wall);
+	free(img->coll[0]);
+	free(img->coll[1]);
+	free(img->coll[2]);
+	free(img->coll[3]);
+	free(img->exit[0]);
+	free(img->exit[1]);
+	free(img->blood);
+	free(img->end);
 }
 
 void	free_everything(t_mlx *all) //need to test !!
@@ -21,19 +21,19 @@ void	free_everything(t_mlx *all) //need to test !!
 	free(all->mlx_ptr);
 	free(all->win_ptr);
 	i = 0;
-	while (all->mapinfo.map[i] != NULL)
+	while (all->map.map[i] != NULL)
 	{
-		free(all->mapinfo.map[i]);
+		free(all->map.map[i]);
 		i++;
 	}
-	free(all->mapinfo.map);
-	free(all->mapinfo.strmap);
+	free(all->map.map);
+	free(all->map.strmap);
 	i = 0;
-	while (i < all->mapinfo.exitcount)
+	while (i < all->map.exitcount)
 	{
-		free(all->mapinfo.exits[i]);
+		free(all->map.exits[i]);
 		i++;
 	}
-	free(all->mapinfo.exits);
-	free_images(&all->images);
+	free(all->map.exits);
+	free_images(&all->img);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_stuff.c                                       :+:      :+:    :+:   */
+/*   error_stuff.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/26 20:34:49 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/28 18:55:10 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ void	check_for_errors(int argc, char *map)
 
 	if (argc != 2)
 		error_exit("Need one map\n", 1);
-	ber = ft_strnstr(map, ".ber", UINT_MAX);
-	if (ber == NULL || ber[4] != '\0') // excludes stuff like affe.bergsteiger.ber but we ain't got time for funky shit like that
+	ber = ft_strrchr(map, '.');
+	if (ber == NULL)
+		error_exit("Map doesn't end in .ber\n", 0);
+	if (ft_strnstr(ber, ".ber", UINT_MAX) == NULL || ber[4] != '\0')
 		error_exit("Map doesn't end in .ber\n", 0);
 }

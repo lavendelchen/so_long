@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/27 15:43:25 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/30 05:10:11 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@
 #  include "keys_linux.h"		// keyboard key names
 #  include "../mlx_linux/mlx.h"	// mlx on linux //
 # endif
+
 typedef struct s_map
 {
 	char	**map;		//map as array of strings, one string as each row
 	char	*strmap;	//map as one string, seperated by \n
-	size_t	rowlen;		//length of each row
-	size_t	collen;		//length of each column
+	size_t	x_len;		//length of each row
+	size_t	y_len;		//length of each column
 	int		collect;	//amount of items to collect
 	size_t	**exits;	//positions of the exits, each on has two integers for x & y. needed to color them green later.
 	int		exitcount;	//amount of exits we have
@@ -62,10 +63,11 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		moves;
-	t_map	mapinfo;
-	t_img	images;
-	t_play	player;
+	int		moves;	//moves made by the player
+	int		won;	//gets initiated to 0, becomes 1 if game is won
+	t_map	map;
+	t_img	img;
+	t_play	play;
 }				t_mlx;
 
 char	*gnl_free_helper(char **str1, char **str2, char **str3);
@@ -78,11 +80,12 @@ void	error_exit(char *message, int is_syserror);
 void	free_everything(t_mlx *all);
 void	alloc_fail(void);
 void	check_for_errors(int argc, char *map);
-void	get_map(char *mapfile, t_map *mapinfo);
-void	map_errors(t_map *mapinfo);
-void	create_images(t_img *images, void *mlx_ptr);
-void	create_window(t_mlx *all, t_map *mapinfo);
+void	get_map(char *mapfile, t_map *map);
+void	map_errors(t_map *map);
+void	create_images(t_img *img, void *mlx_ptr);
+void	create_window(t_mlx *all, t_map *map);
 int		x_hook(void);
 int		key_hook(int keycode, t_mlx *all);
+void	win(t_mlx *all);
 
 #endif
