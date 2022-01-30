@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/29 19:41:33 by shaas            ###   ########.fr        #
+#    Updated: 2022/01/30 17:22:01 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ MAP := affe.ber
 # defines #
 NAME := so_long
 
-SRC := src/so_long.c src/error_stuff.c src/get_next_line.c src/get_next_line_utils.c \
+SRC := dumb_projects/make_a_pride_flag_with_mlx.c
+# SRC := src/so_long.c src/error_stuff.c src/get_next_line.c src/get_next_line_utils.c \
 src/get_map.c src/map_errors.c src/create_images.c src/create_window.c src/hooks.c \
 src/win.c
 
