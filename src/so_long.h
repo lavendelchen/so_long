@@ -6,19 +6,19 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/31 19:13:42 by shaas            ###   ########.fr       */
+/*   Updated: 2022/01/31 19:18:41 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdio.h>				// printf()
-# include <unistd.h>			// read/write
-# include <stdlib.h>			// exit()
-# include <errno.h>				// see if there's an error
-# include <limits.h>			// UINT_MAX
-# include <fcntl.h>				// O_RDONLY
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <errno.h>
+# include <limits.h>
+# include <fcntl.h>
 
 # include "../libft/libft.h"
 
@@ -36,13 +36,13 @@
 
 typedef struct s_map
 {
-	char	**map;		//map as array of strings, one string as each row
-	char	*strmap;	//map as one string, seperated by \n
-	size_t	x_len;		//length of each row
-	size_t	y_len;		//length of each column
-	int		collect;	//amount of items to collect
-	size_t	**exits;	//positions of the exits, each on has two integers for x & y. needed to color them green later.
-	int		exitcount;	//amount of exits we have
+	char	**map;
+	char	*strmap;
+	size_t	x_len;
+	size_t	y_len;
+	int		collect;
+	size_t	**exits;
+	int		exitcount;
 }				t_map;
 
 typedef struct s_img
@@ -58,18 +58,18 @@ typedef struct s_img
 
 typedef struct s_play
 {
-	int	x;			//row position
-	int	y;			//column position
-	int	collected;	//how many items are collected
-	int	ready;		//is player ready to exit? 0 for no, 1 for yes.
+	int	x;
+	int	y;
+	int	collected;
+	int	ready;
 }				t_play;
 
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		moves;	//moves made by the player
-	int		won;	//gets initiated to 0, becomes 1 if game is won
+	int		moves;
+	int		won;
 	t_map	map;
 	t_img	img;
 	t_play	play;
