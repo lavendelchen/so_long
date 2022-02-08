@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 16:44:37 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/30 16:57:08 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:39:51 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	parse_map(char *mapfile, t_map *map)
 
 	fd = open(mapfile, O_RDONLY);
 	if (fd == -1)
-		error_exit("open fail\n", 1);
+		error_exit("open fail", 1);
 	buffer1 = ft_calloc(1, sizeof(char) * 1);
 	line = ft_calloc(1, sizeof(char) * 1);
 	while (line != NULL)

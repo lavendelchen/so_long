@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 23:31:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/30 05:10:11 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:41:01 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	invalid_chars(char *map)
 	if (tester[0] != '\0')
 	{
 		error_exit("Map contains invalid character. \
-Valid characters are [01CEP]\n", 0);
+Valid characters are [01CEP]", 0);
 	}
 	free(tester);
 }
@@ -28,13 +28,13 @@ Valid characters are [01CEP]\n", 0);
 static void	item_numbers(char *map)
 {
 	if (!ft_strchr(map, 'E'))
-		error_exit("Need at least one exit\n", 0);
+		error_exit("Need at least one exit", 0);
 	if (!ft_strchr(map, 'C'))
-		error_exit("Need at least one collectible\n", 0);
+		error_exit("Need at least one collectible", 0);
 	if (!ft_strchr(map, 'P'))
-		error_exit("Need a starting position\n", 0);
+		error_exit("Need a starting position", 0);
 	if (ft_strchr(map, 'P') != ft_strrchr(map, 'P'))
-		error_exit("Only one starting position, please\n", 0);
+		error_exit("Only one starting position, please", 0);
 }
 
 /*btw! your map can have as many empty lines before, after and in between
@@ -47,7 +47,7 @@ static void	is_rectangular(t_map *map)
 	while (map->map[i] != NULL)
 	{
 		if (map->x_len != ft_strlen(map->map[i]))
-			error_exit("Map must be rectangular\n", 0);
+			error_exit("Map must be rectangular", 0);
 		i++;
 	}
 }
@@ -58,7 +58,7 @@ static void	surrounded_by_walls(t_map *map)
 	char	*msg;
 
 	i = 0;
-	msg = "Map must be completely surrounded by walls\n";
+	msg = "Map must be completely surrounded by walls";
 	while (i < map->x_len)
 	{
 		if (map->map[0][i] != '1' ||
