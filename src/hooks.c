@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:14:55 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 00:35:56 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 17:48:45 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static void	go_in_direction(int y_pos, int x_pos, t_mlx *all)
 
 int	key_hook(int keycode, t_mlx *all)
 {
+	mlx_do_key_autorepeaton();
 	if (keycode == KEY_ESCAPE)
 		exit(EXIT_SUCCESS);
 	else if (all->won == 1)

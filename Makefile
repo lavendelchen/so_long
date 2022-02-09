@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/02/09 17:28:49 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/09 17:36:12 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,11 +77,11 @@ exec: print_system
 both: $(NAME) exec
 
 $(MLX): print_system
-	@printf $(LIGHTBLUE)"\n*--------checking mlx...---------------*\n"$(RESET)
+	@printf $(LIGHTBLUE)"*--------checking mlx...---------------*\n\n"$(RESET)
 	@make -s -C $(MLX_DIR) # need to check if works for mac
 
 $(LIBFT): print_system
-	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
+	@printf $(LIGHTBLUE)"*--------checking libft...-------------*\n\n"$(RESET)
 	@make -C $(LIBFT_DIR)
 
 wsl: # doesnt work yet :/
