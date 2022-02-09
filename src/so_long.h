@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/31 19:18:41 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 18:24:02 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	create_images(t_img *img, void *mlx_ptr);
 void	create_window(t_mlx *all, t_map *map);
 int		x_hook(void);
 int		key_hook(int keycode, t_mlx *all);
+void	go_in_direction(int y_pos, int x_pos, t_mlx *all);
 void	win(t_mlx *all);
 
 #endif

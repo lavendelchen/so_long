@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/02/09 17:36:12 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/09 18:26:18 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME := so_long
 # SRC := dumb_projects/make_a_bi_uebergang_with_mlx.c
 SRC := src/so_long.c src/error_stuff.c src/get_next_line.c src/get_next_line_utils.c \
 src/get_map.c src/map_errors.c src/create_images.c src/create_window.c src/hooks.c \
-src/win.c
+src/go_in_direction.c src/win.c
 
 OBJ := $(SRC:.c=.o)
 

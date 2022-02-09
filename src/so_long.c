@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 01:50:33 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 00:49:17 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 18:35:04 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	main(int argc, char **argv)
 	create_images(&all.img, all.mlx_ptr);
 	create_window(&all, &all.map);
 	mlx_hook(all.win_ptr, 17, 1L << 17, x_hook, NULL);
-	mlx_key_hook(all.win_ptr, key_hook, &all);
+	mlx_hook(all.win_ptr, 2, 1L << 0, key_hook, &all);
 	mlx_loop(all.mlx_ptr);
 }
