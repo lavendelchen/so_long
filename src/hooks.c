@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:14:55 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/30 05:14:39 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:35:56 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ static void	move_player(t_mlx *all, t_play *play, int y_pos, int x_pos)
 	play->y = y_pos;
 	play->x = x_pos;
 	all->moves++;
+	ft_putchar_fd('[', 1);
+	ft_putnbr_fd(all->moves, 1);
 	if (all->moves == 1)
-		printf("[%d move made]\n", all->moves);
+		ft_putendl_fd(" move made]", 1);
 	else
-		printf("[%d moves made]\n", all->moves);
+		ft_putendl_fd(" moves made]", 1);
 }
 
 static void	go_in_direction(int y_pos, int x_pos, t_mlx *all)

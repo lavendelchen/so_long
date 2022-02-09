@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 16:44:07 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/30 16:56:54 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:41:28 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	create_window(t_mlx *all, t_map *map)
 	all->win_ptr = mlx_new_window(all->mlx_ptr, \
 	map->x_len * 64, map->y_len * 64, "so_long");
 	if (all->win_ptr == NULL)
-		error_exit("Failed to create window\n", 0);
+		error_exit("Failed to create window", 0);
 	y = 0;
 	while (map->map[y] != NULL)
 	{

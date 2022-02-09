@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:50:54 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/30 04:59:51 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:39:06 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	*my_xpm_file_to_image(void *mlx_ptr, char *filename, int *w, int *h)
 
 	img_ptr = mlx_xpm_file_to_image(mlx_ptr, filename, w, h);
 	if (img_ptr == NULL)
-		error_exit("Failed to create image\n", 0);
+		error_exit("Failed to create image", 0);
 	return (img_ptr);
 }
 

@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 19:36:15 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/31 18:38:37 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 00:37:06 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	win(t_mlx *all)
 		y_text = ((all->map.y_len / 2) * 64) - 10 + (0.5 * 64);
 	mlx_put_image_to_window(all->mlx_ptr, all->win_ptr, \
 	all->img.end, x_text, y_text);
-	printf("Yes, that should work.\n"); //still not sure if this or "you won"
-	//printf("\e[91mY\e[95mO\e[94mU \e[96mW\e[92mO\e[93mN\e[37m!\e[0m\n");
+	ft_putendl_fd("Yes, that should work.", 1); //still not sure if this or "you won"
+	//ft_putendl_fd("\e[91mY\e[95mO\e[94mU \e[96mW\e[92mO\e[93mN\e[37m!\e[0m", 1);
 	all->won = 1;
 }
