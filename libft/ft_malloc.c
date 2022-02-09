@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 15:03:22 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 00:38:30 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:09:36 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /*amazing idea by toni: every malloc call will now just call ft_malloc, which
 already handles malloc checks. in case of a failure the program exits.
 this means we don't have to check for malloc fails anywhere else now. sad thing
-is, this kind of simplification only works if you have an ongoing process that 
-is always gonna stop with an exit. so, programs that finish need to have it 
-complicated.*/
+is, this kind of simplification only works if you have an ongoing process that
+is always gonna stop with an exit. so, programs that finish need to have it
+complicated. note for so_long: doesnt exit cleanly*/
 void	*ft_malloc(size_t size)
 {
 	char	*ptr;

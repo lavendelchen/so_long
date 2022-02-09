@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 18:14:55 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 18:35:45 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:25:30 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_hook(int keycode, t_mlx *all)
 {
 	if (keycode == KEY_ESCAPE)
-		exit(EXIT_SUCCESS);
+		exit_cleanly(all, EXIT_SUCCESS);
 	else if (all->won == 1)
 		return (0);
 	else if (keycode == KEY_W)
@@ -29,7 +29,8 @@ int	key_hook(int keycode, t_mlx *all)
 	return (0);
 }
 
-int	x_hook(void)
+int	x_hook(t_mlx *all)
 {
-	exit(EXIT_SUCCESS);
+	exit_cleanly(all, EXIT_SUCCESS);
+	return (0);
 }

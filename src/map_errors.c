@@ -6,13 +6,13 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 23:31:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 00:41:01 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 19:22:22 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	invalid_chars(char *map)
+static void	invalid_chars(char *map, t_mlx *all)
 {
 	char	*tester;
 
@@ -20,26 +20,26 @@ static void	invalid_chars(char *map)
 	if (tester[0] != '\0')
 	{
 		error_exit("Map contains invalid character. \
-Valid characters are [01CEP]", 0);
+Valid characters are [01CEP]", 0, all);
 	}
 	free(tester);
 }
 
-static void	item_numbers(char *map)
+static void	item_numbers(char *map, t_mlx *all)
 {
 	if (!ft_strchr(map, 'E'))
-		error_exit("Need at least one exit", 0);
+		error_exit("Need at least one exit", 0, all);
 	if (!ft_strchr(map, 'C'))
-		error_exit("Need at least one collectible", 0);
+		error_exit("Need at least one collectible", 0, all);
 	if (!ft_strchr(map, 'P'))
-		error_exit("Need a starting position", 0);
+		error_exit("Need a starting position", 0, all);
 	if (ft_strchr(map, 'P') != ft_strrchr(map, 'P'))
-		error_exit("Only one starting position, please", 0);
+		error_exit("Only one starting position, please", 0, all);
 }
 
 /*btw! your map can have as many empty lines before, after and in between
 the map as you want. ft_split gets rid of them. maybe i should change this?*/
-static void	is_rectangular(t_map *map)
+static void	is_rectangular(t_map *map, t_mlx *all)
 {
 	size_t	i;
 
@@ -47,12 +47,12 @@ static void	is_rectangular(t_map *map)
 	while (map->map[i] != NULL)
 	{
 		if (map->x_len != ft_strlen(map->map[i]))
-			error_exit("Map must be rectangular", 0);
+			error_exit("Map must be rectangular", 0, all);
 		i++;
 	}
 }
 
-static void	surrounded_by_walls(t_map *map)
+static void	surrounded_by_walls(t_map *map, t_mlx *all)
 {
 	size_t	i;
 	char	*msg;
@@ -63,7 +63,7 @@ static void	surrounded_by_walls(t_map *map)
 	{
 		if (map->map[0][i] != '1' ||
 			map->map[map->y_len - 1][i] != '1')
-			error_exit(msg, 0);
+			error_exit(msg, 0, all);
 		i++;
 	}
 	i = 0;
@@ -71,7 +71,7 @@ static void	surrounded_by_walls(t_map *map)
 	{
 		if (map->map[i][0] != '1' ||
 			map->map[i][map->x_len - 1] != '1')
-			error_exit(msg, 0);
+			error_exit(msg, 0, all);
 		i++;
 	}
 }
@@ -79,10 +79,10 @@ static void	surrounded_by_walls(t_map *map)
 /*spointer stands for single pointer, dpointer for double pointer.
 to check some criteria of a valid map, the huge string is easier to check
 than the string array.*/
-void	map_errors(t_map *map)
+void	map_errors(t_map *map, t_mlx *all)
 {
-	invalid_chars(map->strmap);
-	item_numbers(map->strmap);
-	is_rectangular(map);
-	surrounded_by_walls(map);
+	invalid_chars(map->strmap, all);
+	item_numbers(map->strmap, all);
+	is_rectangular(map, all);
+	surrounded_by_walls(map, all);
 }
