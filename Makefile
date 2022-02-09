@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/30 17:37:40 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/09 17:28:49 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ endif
 ifeq ($(OS), Linux)
 	MLX_DIR = mlx_linux
 	MLX = $(MLX_DIR)/libmlx.a
-	COMP1 := gcc -Wall -Wextra -Werror -g -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
+	COMP1 := gcc -Wall -Wextra -Werror -g -l/usr/include -lmlx -O3 -c
 	COMP2 := gcc -Wall -Wextra -Werror -g $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux \
 	-L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 endif
@@ -82,7 +82,7 @@ $(MLX): print_system
 
 $(LIBFT): print_system
 	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
-	@make -C $(LIBFT_DIR) #s oder nicht s, das ist hier die frage
+	@make -C $(LIBFT_DIR)
 
 wsl: # doesnt work yet :/
 	export DISPLAY=$$(cat /etc/resolv.conf | grep nameserver | awk '{print $$2}'):0.0
