@@ -6,7 +6,7 @@
 #    By: shaas <shaas@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/25 11:26:14 by shaas             #+#    #+#              #
-#    Updated: 2022/01/30 17:37:40 by shaas            ###   ########.fr        #
+#    Updated: 2022/02/09 22:02:47 by shaas            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME := so_long
 # SRC := dumb_projects/make_a_bi_uebergang_with_mlx.c
 SRC := src/so_long.c src/error_stuff.c src/get_next_line.c src/get_next_line_utils.c \
 src/get_map.c src/map_errors.c src/create_images.c src/create_window.c src/hooks.c \
-src/win.c
+src/go_in_direction.c src/win.c
 
 OBJ := $(SRC:.c=.o)
 
@@ -43,7 +43,7 @@ endif
 ifeq ($(OS), Linux)
 	MLX_DIR = mlx_linux
 	MLX = $(MLX_DIR)/libmlx.a
-	COMP1 := gcc -Wall -Wextra -Werror -g -l/usr/include -lmlx -O3 -c # not sure if we need extra stuff?? 
+	COMP1 := gcc -Wall -Wextra -Werror -g -l/usr/include -lmlx -O3 -c
 	COMP2 := gcc -Wall -Wextra -Werror -g $(OBJ) $(LIBFT) -Lmlx_linux -lmlx_Linux \
 	-L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 endif
@@ -77,12 +77,12 @@ exec: print_system
 both: $(NAME) exec
 
 $(MLX): print_system
-	@printf $(LIGHTBLUE)"\n*--------checking mlx...---------------*\n"$(RESET)
+	@printf $(LIGHTBLUE)"*--------checking mlx...---------------*\n\n"$(RESET)
 	@make -s -C $(MLX_DIR) # need to check if works for mac
 
 $(LIBFT): print_system
-	@printf $(LIGHTBLUE)"\n*--------checking libft...-------------*\n"$(RESET)
-	@make -C $(LIBFT_DIR) #s oder nicht s, das ist hier die frage
+	@printf $(LIGHTBLUE)"*--------checking libft...-------------*\n\n"$(RESET)
+	@make -C $(LIBFT_DIR)
 
 wsl: # doesnt work yet :/
 	export DISPLAY=$$(cat /etc/resolv.conf | grep nameserver | awk '{print $$2}'):0.0

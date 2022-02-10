@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 18:10:46 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/31 19:13:42 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/10 13:24:35 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,18 @@ char	*gnl_substr(const char *s, unsigned int start, size_t len);
 char	*gnl_linejoin(char *old_line, char *add);
 int		gnl_find_newline(char *buffer);
 char	*get_next_line(int fd);
-void	error_exit(char *message, int is_syserror);
+void	error_exit(char *message, int is_syserror, t_mlx *all);
 void	free_everything(t_mlx *all);
-void	alloc_fail(void);
+void	alloc_fail(t_mlx *all);
 void	check_for_errors(int argc, char *map);
-void	get_map(char *mapfile, t_map *map);
-void	map_errors(t_map *map);
-void	create_images(t_img *img, void *mlx_ptr);
+void	get_map(char *mapfile, t_map *map, t_mlx *all);
+void	map_errors(t_map *map, t_mlx *all);
+void	create_images(t_img *img, t_mlx *all);
 void	create_window(t_mlx *all, t_map *map);
-int		x_hook(void);
+int		x_hook(t_mlx *all);
 int		key_hook(int keycode, t_mlx *all);
+void	go_in_direction(int y_pos, int x_pos, t_mlx *all);
+void	exit_cleanly(t_mlx *all, int s_or_f);
 void	win(t_mlx *all);
 
 #endif

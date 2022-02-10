@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/25 13:25:39 by shaas             #+#    #+#             */
-/*   Updated: 2022/01/31 19:11:07 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/09 17:56:38 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_toupper(int c);
 
 /*print stuff to certain file descriptor*/
 void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);	
+void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
@@ -95,7 +95,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 /*converts string to integer*/
 int		ft_atoi(const char *str);
 
-/*converts integer to string*/
+/*💭 converts integer to string*/
 char	*ft_itoa(int n);
 
 /*allocates mem, and immediately checks for alloc fail & exits in that case*/
