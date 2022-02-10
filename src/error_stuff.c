@@ -6,7 +6,7 @@
 /*   By: shaas <shaas@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 19:58:25 by shaas             #+#    #+#             */
-/*   Updated: 2022/02/09 21:40:58 by shaas            ###   ########.fr       */
+/*   Updated: 2022/02/10 23:22:37 by shaas            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static void	destroy_mlx(void *mlx_ptr, void *win_ptr, t_img *img)
 		mlx_destroy_image(mlx_ptr, img->end);
 	if (win_ptr)
 		mlx_destroy_window(mlx_ptr, win_ptr);
-	mlx_destroy(mlx_ptr);
 }
 
 void	exit_cleanly(t_mlx *all, int s_or_f)
