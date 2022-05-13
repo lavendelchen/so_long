@@ -1,6 +1,6 @@
 ### COMPILATION ON WSL
 for compilation to work on WSL, you're going to have to initiate XMING following the 
-"Getting a screen on WSL" section on this website: https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
+"Compilation on Linux" and "Getting a screen on WSL" sections on this website: https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
 
 now, you're gonna have to routinely do two things:
 * at every new start of your computer, launch XLaunch and follow the steps for it again.
