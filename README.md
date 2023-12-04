@@ -1,4 +1,4 @@
-![so_long_demo](https://42born2code.slack.com/files/U024VBK6JMU/F05HGM4EL8Z/screen_recording_2023-07-14_at_5.06.22_pm.mov)
+<video src='https://youtu.be/halnwx2YNdw?si=0AwkpAqNr3JP1kv3'/>
 
 ### COMPILATION ON WSL
 for compilation to work on WSL, you're going to have to initiate XMING following the 
