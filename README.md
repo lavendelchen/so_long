@@ -1,4 +1,4 @@
-<video src='https://youtu.be/halnwx2YNdw?si=0AwkpAqNr3JP1kv3'/>
+[![Demo Video](http://img.youtube.com/vi/halnwx2YNdw/0.jpg)](https://youtu.be/halnwx2YNdw?si=0AwkpAqNr3JP1kv3 "so_long_demo")
 
 ### COMPILATION ON WSL
 for compilation to work on WSL, you're going to have to initiate XMING following the 
