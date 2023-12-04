@@ -1,3 +1,5 @@
+![so_long_demo](https://42born2code.slack.com/files/U024VBK6JMU/F05HGM4EL8Z/screen_recording_2023-07-14_at_5.06.22_pm.mov)
+
 ### COMPILATION ON WSL
 for compilation to work on WSL, you're going to have to initiate XMING following the 
 "Compilation on Linux" and "Getting a screen on WSL" sections on this website: https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html
